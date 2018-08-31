@@ -1,0 +1,41 @@
+<h4>Utilizar jQuery dentro de Angular</h4>
+<button id="botonjq">Mostrar textos</button>
+<p id="textojq" class="alert alert-warning">
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+</p>
+
+<hr/>
+Component Padre:
+<h1>{{titulo}}</h1>
+  <ul>
+  		<li>Camiseta Roja</li>
+  		<li>Gorra negra</li>
+  </ul>
+
+<hr/>
+<p>
+Nombre del parque:
+<input type="text" [(ngModel)]="nombreDelParque" (keyup)="mostrarNombre()"/>
+</p>
+<p>
+Resultado: {{nombreDelParque}}
+</p>
+<br/>
+
+<div *ngIf="miParque">
+	<h4>Datos de mi parque desde el hijo</h4>
+	<ol>
+		<li>{{miParque.nombre}}</li>
+		<li>{{miParque.metros}}</li>
+		<li>{{miParque.vegetacion}}</li>
+		<li>{{miParque.abierto}}</li>
+	</ol>
+</div>
+
+<hr/>
+<p *ngIf="nombreDelParque">
+Component hijo:
+  <parques [nombre]="nombreDelParque" 
+  		   [metros_cuadrados]="567"
+  		   (pasameLosDatos)="verDatosParque($event)"></parques>
+</p>
